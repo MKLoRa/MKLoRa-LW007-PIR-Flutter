@@ -1,0 +1,85 @@
+enum Lw007ParamAccess {
+  readOnly,
+  writeOnly,
+  readWrite,
+}
+
+enum Lw007ParamKey {
+  loraRegion(0x01, Lw007ParamAccess.readWrite),
+  loraMode(0x02, Lw007ParamAccess.readWrite),
+  loraDevEui(0x03, Lw007ParamAccess.readWrite),
+  loraAppEui(0x04, Lw007ParamAccess.readWrite),
+  loraAppKey(0x05, Lw007ParamAccess.readWrite),
+  loraDevAddr(0x06, Lw007ParamAccess.readWrite),
+  loraAppSkey(0x07, Lw007ParamAccess.readWrite),
+  loraNwkSkey(0x08, Lw007ParamAccess.readWrite),
+  loraMessageType(0x09, Lw007ParamAccess.readWrite),
+  loraMaxRetransmissionTimes(0x0A, Lw007ParamAccess.readWrite),
+  loraCh(0x0B, Lw007ParamAccess.readWrite),
+  loraDr(0x0C, Lw007ParamAccess.readWrite),
+  loraUplinkStrategy(0x0D, Lw007ParamAccess.readWrite),
+  loraDutycycle(0x0E, Lw007ParamAccess.readWrite),
+  loraTimeSyncInterval(0x0F, Lw007ParamAccess.readWrite),
+  loraNetworkCheckInterval(0x10, Lw007ParamAccess.readWrite),
+  loraSingleChannelFunction(0x11, Lw007ParamAccess.readWrite),
+  loraSingleChannelSelection(0x12, Lw007ParamAccess.readWrite),
+  bleEnable(0x20, Lw007ParamAccess.readWrite),
+  bleAdvInterval(0x21, Lw007ParamAccess.readWrite),
+  bleConnectable(0x22, Lw007ParamAccess.readWrite),
+  bleTimeoutDuration(0x23, Lw007ParamAccess.readWrite),
+  bleLoginMode(0x24, Lw007ParamAccess.readWrite),
+  bleTxPower(0x25, Lw007ParamAccess.readWrite),
+  bleAdvName(0x26, Lw007ParamAccess.readWrite),
+  pirEnable(0x30, Lw007ParamAccess.readWrite),
+  pirReportInterval(0x31, Lw007ParamAccess.readWrite),
+  pirSensitivity(0x32, Lw007ParamAccess.readWrite),
+  pirDelayTime(0x33, Lw007ParamAccess.readWrite),
+  hallStatusEnable(0x34, Lw007ParamAccess.readWrite),
+  thEnable(0x35, Lw007ParamAccess.readWrite),
+  thSampleRate(0x36, Lw007ParamAccess.readWrite),
+  tempThresholdAlarmEnable(0x37, Lw007ParamAccess.readWrite),
+  tempThresholdAlarm(0x38, Lw007ParamAccess.readWrite),
+  tempChangeAlarmEnable(0x3A, Lw007ParamAccess.readWrite),
+  tempChangeAlarmDuration(0x3B, Lw007ParamAccess.readWrite),
+  tempChangeAlarmValue(0x3C, Lw007ParamAccess.readWrite),
+  humidityThresholdAlarmEnable(0x3D, Lw007ParamAccess.readWrite),
+  humidityThresholdAlarm(0x3E, Lw007ParamAccess.readWrite),
+  humidityChangeAlarmEnable(0x40, Lw007ParamAccess.readWrite),
+  humidityChangeAlarmDuration(0x41, Lw007ParamAccess.readWrite),
+  humidityChangeAlarmValue(0x42, Lw007ParamAccess.readWrite),
+  timeZone(0x43, Lw007ParamAccess.readWrite),
+  changePassword(0x44, Lw007ParamAccess.readWrite),
+  heartbeat(0x46, Lw007ParamAccess.readWrite),
+  lowPowerPayload(0x48, Lw007ParamAccess.readWrite),
+  ledIndicatorStatus(0x49, Lw007ParamAccess.readWrite),
+  condition1VoltageThreshold(0x4B, Lw007ParamAccess.readWrite),
+  condition1MinSampleInterval(0x4C, Lw007ParamAccess.readWrite),
+  condition1SampleTimes(0x4D, Lw007ParamAccess.readWrite),
+  restart(0x50, Lw007ParamAccess.writeOnly),
+  restore(0x51, Lw007ParamAccess.writeOnly),
+  powerOff(0x52, Lw007ParamAccess.writeOnly),
+  time(0x53, Lw007ParamAccess.writeOnly),
+  networkStatus(0x54, Lw007ParamAccess.readOnly),
+  battery(0x56, Lw007ParamAccess.readOnly),
+  mac(0x57, Lw007ParamAccess.readOnly),
+  pir(0x58, Lw007ParamAccess.readOnly),
+  hallStatusSum(0x59, Lw007ParamAccess.readOnly),
+  thData(0x5A, Lw007ParamAccess.readOnly),
+  pcbaStatus(0x5C, Lw007ParamAccess.readWrite),
+  selftestStatus(0x5D, Lw007ParamAccess.readOnly),
+  batteryInfo(0x5E, Lw007ParamAccess.readOnly),
+  batteryReset(0x5F, Lw007ParamAccess.writeOnly),
+  batteryInfoLast(0x60, Lw007ParamAccess.readOnly),
+  batteryInfoAll(0x61, Lw007ParamAccess.readOnly),
+  ;
+
+  const Lw007ParamKey(this.key, this.access);
+
+  final int key;
+  final Lw007ParamAccess access;
+
+  bool get canRead => access != Lw007ParamAccess.writeOnly;
+  bool get canWrite => access != Lw007ParamAccess.readOnly;
+
+  bool get isControl => key >= 0x50;
+}

@@ -1,0 +1,54 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- required for API 18 - 30 -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+
+    <!-- required for API 23 - 33 -->
+    <uses-permission-sdk-23
+        android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission-sdk-23
+        android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <!-- API 31+ -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <!-- add android:usesPermissionFlags="neverForLocation" when you can strongly assert that
+         your app never derives physical location from Bluetooth scan results. -->
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+
+    <application>
+        <service android:name=".DfuService"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false"/>
+        <service android:name=".DfuService2"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false"/>
+        <service android:name=".DfuService3"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false"/>
+        <service android:name=".DfuService4"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false"/>
+        <service android:name=".DfuService5"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false"/>
+        <service android:name=".DfuService6"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false"/>
+        <service android:name=".DfuService7"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false"/>
+        <service android:name=".DfuService8"
+            android:foregroundServiceType="connectedDevice"
+            android:exported="false"/>
+        <!-- more service classes can be added here to support more parallel DFU processes.
+             make sure to also update DFU_SERVICE_CLASSES in NordicDfuPlugin.kt -->
+    </application>
+</manifest>
