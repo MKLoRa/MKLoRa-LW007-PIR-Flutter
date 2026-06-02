@@ -2,7 +2,7 @@
 
 Flutter client for **LW007-PIR** devices. Supports BLE scanning, connection, protocol parameter read/write, device-initiated disconnect notifications, LoRa configuration, PIR / Hall / T&H settings, BLE advertising settings, battery consumption (deviceType 1), debug log export, and Nordic DFU firmware updates on Android and iOS physical devices.
 
-Native Android reference: [`LW007_Android`]
+Native Android reference: `LW007_Android`
 
 ---
 
